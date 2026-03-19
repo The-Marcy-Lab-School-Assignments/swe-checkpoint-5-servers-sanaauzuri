@@ -15,7 +15,7 @@ const pets = [
 // TODO: Create a new pet and add it to the array. Return the new pet.
 module.exports.create = (name) => {
     const newPet = { id: getId(), name };
-    todos.push(newPet);
+    pets.push(newPet);
     return { ...newPet };
 }
 
@@ -41,7 +41,7 @@ module.exports.update = (id, newName) => {
         return null;
     }
     pet.name = newName.name;
-    return { ...todo };
+    return { ...pet };
 }
 
 // TODO: Remove a pet from the array. Return the deleted pet,
