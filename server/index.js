@@ -3,7 +3,7 @@ const path = require('path');
 
 // TODO: Import your controllers from ./controllers/petControllers.js
 
-
+const petControllers = require('./controllers/petControllers');
 const app = express();
 
 /////////////////////
@@ -31,7 +31,11 @@ app.use(express.static(pathToFrontend))
 /////////////////////
 
 // TODO: Define RESTful endpoints for managing pets.
-
+app.get('/api/pets', petControllers.listPets);
+app.get('/api/pets/:id', petControllers.getPet);
+app.post('/api/pets', petControllers.createPet);
+app.patch('/api/pets/:id', petControllers.updatePet);
+app.delete('/api/pets/:id', petControllers.deletePet);
 
 const port = 8080;
 app.listen(port, () => console.log(`Server is running at http://localhost:${port}`));
