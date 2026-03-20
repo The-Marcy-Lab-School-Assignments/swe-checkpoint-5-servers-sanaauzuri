@@ -49,8 +49,8 @@ module.exports.update = (id, newName) => {
 module.exports.destroy = (id) => {
     const petIndex = pets.findIndex((pet) => pet.id === id);
     if (petIndex < 0) {
-        return false;
+        return null;
     }
-    pets.splice(petIndex, 1);
-    return true;
+    const destroyedPet = pets.splice(petIndex, 1);
+    return { ...destroyedPet };
 }

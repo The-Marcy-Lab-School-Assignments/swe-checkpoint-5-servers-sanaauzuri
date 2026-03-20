@@ -41,13 +41,14 @@ module.exports.updatePet = (req, res) => {
   // Parse the id from req.params and the name from req.body
   const { id } = req.params;
   const { name } = req.body;
-  const updatedPet = petModel.update(Number(id), { name });
+  
   // If name is missing, send a 400 response
   if (!name) {
     return res.status(400).send({ message: 'Name is missing' });
   };
+  const updatedPet = petModel.update(Number(id), { name });
   // If the pet is not found, send a 404 response
-  if (!pet) {
+  if (!updatedPet) {
     return res.status(404).send({ message: `No pet with the id ${id}` });
   };
   // Otherwise, send the updated pet
@@ -59,7 +60,7 @@ module.exports.deletePet = (req, res) => {
   const { id } = req.params
   const deletedPet = petModel.destroy(Number(id));
   // If the pet is not found, send a 404 response
-  if (!pet) {
+  if (!deletedPetet) {
     return res.status(404).send({ message: `No pet with the id ${id}` });
   };
   // Otherwise, send the deleted pet
